@@ -9,8 +9,8 @@ fi
 
 # allow the container to be started with `--user`
 if [ "$1" = 'etc_oneshot' -a "$(id -u)" = '0' ]; then
-	chown -R etc .
-	exec gosu etc "$0" "$@"
+	chown -R etclassic .
+	exec gosu etclassic "$0" "$@"
 fi
 
 exec "$@"

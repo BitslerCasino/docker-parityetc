@@ -14,11 +14,11 @@ nano /home/$USER/.etcdocker/config.toml
 
 Run the docker image
 ```
-docker run -v parityetc-data:/etc --name=parityetc-node -d \
+docker run -v parityetc-data:/etclassic --name=parityetc-node -d \
       -p 8546:8546 \
       -p 30304:30304 \
       -p 30304:30304/udp \
-      -v /home/$USER/.etcdocker/config.toml:/etc/.local/share/io.parity.ethereum/config.toml \
+      -v /home/$USER/.etcdocker/config.toml:/etclassic/.local/share/io.parity.ethereum/config.toml \
       bitsler/docker-parityetc:latest
 ```
 
@@ -29,5 +29,5 @@ docker logs -f parityetc-node
 
 Auto Installation
 ```
-sudo bash -c "$(curl -L https://git.io/fxI2Z)"
+sudo bash -c "$(curl -L https://git.io/fxI26)"
 ```

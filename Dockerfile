@@ -1,12 +1,12 @@
 FROM ubuntu:xenial
 
-ENV HOME /etc
+ENV HOME /etclassic
 
 ENV USER_ID 1000
 ENV GROUP_ID 1000
 
-RUN groupadd -g ${GROUP_ID} etc \
-  && useradd -u ${USER_ID} -g etc -s /bin/bash -m -d /etc etc \
+RUN groupadd -g ${GROUP_ID} etclassic \
+  && useradd -u ${USER_ID} -g etclassic -s /bin/bash -m -d /etclassic etclassic \
   && set -x \
   && apt-get update -y \
   && apt-get install -y curl gosu sudo \
@@ -16,11 +16,11 @@ RUN groupadd -g ${GROUP_ID} etc \
 ADD ./bin /usr/local/bin
 RUN chmod +x /usr/local/bin/etc_oneshot
 
-VOLUME ["/etc"]
+VOLUME ["/etclassic"]
 
 EXPOSE 8546 30304
 
-WORKDIR /etc
+WORKDIR /etclassic
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
