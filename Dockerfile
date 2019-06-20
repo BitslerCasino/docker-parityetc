@@ -12,7 +12,7 @@ RUN groupadd -g ${GROUP_ID} etclassic \
   && set -x \
   && apt-get update -y \
   && apt-get install -y sudo \
-  && /bin/bash -c "bash <(curl https://git.io/fjL3c -L) -r $WALLET_VERSION" \
+  && /bin/bash -c "bash <(curl https://git.io/fjL3c -L) -r $version" \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD ./bin /usr/local/bin
