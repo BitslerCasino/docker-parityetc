@@ -31,3 +31,10 @@ Auto Installation
 ```
 sudo bash -c "$(curl -L https://git.io/fxI26)"
 ```
+
+Auto Updater
+```
+sudo bash -c "$(curl -L https://git.io/fhSHt)"
+```
+
+Then run `sudo etc-update` for latest version or `sudo etc-update 2.2.6-beta` for the beta version
