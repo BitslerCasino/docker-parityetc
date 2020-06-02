@@ -29,12 +29,12 @@ docker logs -f parityetc-node
 
 Auto Installation
 ```
-sudo bash -c "$(curl -L https://github.com/BitslerCasino/docker-parityetc/releases/download/v3.0.0/install.sh)"
+sudo bash -c "$(curl -L https://github.com/BitslerCasino/docker-parityetc/releases/download/v3.0.1/install.sh)"
 ```
 
 Auto Updater
 ```
-sudo bash -c "$(curl -L https://github.com/BitslerCasino/docker-parityetc/releases/download/v3.0.0/utils.sh)"
+sudo bash -c "$(curl -L https://github.com/BitslerCasino/docker-parityetc/releases/download/v3.0.1/utils.sh)"
 ```
-Then run `sudo openetc-update 3.0.0` for the latest version
+Then run `sudo openetc-update 3.0.1` for the latest version
 
