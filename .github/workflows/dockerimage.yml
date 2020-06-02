@@ -1,0 +1,53 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --build-arg version=$(cat VERSION) --tag bitsler/docker-openetc:$(cat VERSION) --tag bitsler/docker-openetc:latest
+
+    - name: Log into registry
+      run: echo "${{ secrets.HUB_TOKEN }}" | docker login -u ${{ secrets.HUB_USERNAME }} --password-stdin
+
+    - name: Push image
+      run: |
+          docker push bitsler/docker-openetc:$(cat VERSION)
+          docker push bitsler/docker-openetc:latest
+
+    - name: Push releases
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.13
+      id: go
+
+    - name: Push image
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+          go get github.com/github-release/github-release
+          bash ./release.sh $(cat VERSION)
+
+    - name: Setup git
+      run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+    - name: Git Commit Push
+      run: |
+          git add .
+          git commit -m "Update $(cat VERSION)"
+          git push origin master
+
+
