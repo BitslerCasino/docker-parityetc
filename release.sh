@@ -31,3 +31,4 @@ github-release upload \
 
 sed -i "s/docker-parityetc\/releases\/download\/.*\/install\.sh/docker-parityetc\/releases\/download\/v$VERSION\/install\.sh/g" README.md
 sed -i "s/docker-parityetc\/releases\/download\/.*\/utils\.sh/docker-parityetc\/releases\/download\/v$VERSION\/utils\.sh/g" README.md
+sed -i "s/openetc-update .*\`/openetc-update $VERSION\`/g" README.md
